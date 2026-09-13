@@ -1,200 +1,257 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>OilWatch - Oil Market Tracker</title>
+    <title>OilWatch | Crude Oil Market Monitor</title>
 
-<link rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}">
-```
-
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-<header class="topbar">
+<header class="site-header">
 
-```
-<div class="brand">
-    <span class="brand-mark"></span>
-    <span class="brand-name">OilWatch</span>
-</div>
+    <div class="header-inner">
 
-<div class="status" id="status">
-    <span class="status-dot"></span>
-    <span id="status-text">Connecting...</span>
-</div>
-```
+        <a href="/" class="logo">
+            <span class="logo-icon">O</span>
+            <span>OilWatch</span>
+        </a>
 
-</header>
+        <nav class="navigation">
+            <a href="#dashboard">Dashboard</a>
+            <a href="#market">Market</a>
+            <a href="#shipping">Shipping</a>
+        </nav>
 
-<section class="hero">
-
-```
-<div class="hero-price">
-
-    <span class="hero-label">WTI crude price</span>
-
-    <span class="hero-number" id="hero-wti">--</span>
-
-    <span class="hero-delta" id="hero-wti-delta">--</span>
-
-</div>
-
-<p class="hero-context">
-    OilWatch tracks crude oil prices and provides a simple view
-    of market changes. The dashboard also highlights why activity
-    around important shipping routes such as the Red Sea can affect
-    the oil market.
-</p>
-```
-
-</section>
-
-<main class="body-grid">
-
-```
-<section class="panel">
-
-    <div class="panel-head">
-
-        <h2>Oil prices - 30 day view</h2>
-
-        <div class="legend">
-
-            <span class="legend-item">
-                <i class="swatch wti"></i>
-                WTI
-            </span>
-
-            <span class="legend-item">
-                <i class="swatch brent"></i>
-                Brent
-            </span>
-
-            <span class="legend-item">
-                <i class="swatch event"></i>
-                Event
-            </span>
-
+        <div class="connection">
+            <span class="connection-dot"></span>
+            <span id="status-text">Connecting...</span>
         </div>
 
     </div>
 
-    <canvas id="oil-chart" height="260"></canvas>
-
-</section>
+</header>
 
 
-<aside class="rail">
+<main id="dashboard">
 
-    <div class="panel">
+    <!-- Main introduction -->
 
-        <h2>Current market prices</h2>
+    <section class="intro">
 
-        <dl class="stat-list">
+        <div class="intro-text">
 
-            <div class="stat-row">
-                <dt>WTI crude</dt>
-                <dd id="stat-wti">--</dd>
+            <p class="eyebrow">CRUDE OIL MARKET MONITOR</p>
+
+            <h1>
+                Oil prices,<br>
+                <span>at a glance.</span>
+            </h1>
+
+            <p class="intro-description">
+                OilWatch gives you a simple view of crude oil prices,
+                recent market movement and shipping risks that can
+                influence the energy market.
+            </p>
+
+        </div>
+
+
+        <div class="main-price">
+
+            <p>WTI CRUDE</p>
+
+            <div class="price-line">
+
+                <span id="hero-wti">--</span>
+
+                <span class="price-change" id="hero-wti-delta">
+                    --
+                </span>
+
             </div>
 
-            <div class="stat-row">
-                <dt>Brent crude</dt>
-                <dd id="stat-brent">--</dd>
+            <small>West Texas Intermediate</small>
+
+        </div>
+
+    </section>
+
+
+    <!-- Market section -->
+
+    <section id="market" class="market-layout">
+
+        <div class="chart-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <p class="eyebrow">PRICE HISTORY</p>
+                    <h2>30-day market movement</h2>
+                </div>
+
+                <div class="legend">
+
+                    <span>
+                        <i class="legend-line wti-line"></i>
+                        WTI
+                    </span>
+
+                    <span>
+                        <i class="legend-line brent-line"></i>
+                        Brent
+                    </span>
+
+                    <span>
+                        <i class="legend-line event-line"></i>
+                        Event
+                    </span>
+
+                </div>
+
             </div>
 
-            <div class="stat-row">
-                <dt>US gas average</dt>
-                <dd id="stat-gas">--</dd>
+            <div class="chart-container">
+                <canvas id="oil-chart"></canvas>
             </div>
 
-        </dl>
-
-        <p class="stat-footnote" id="gas-footnote"></p>
-
-    </div>
+        </div>
 
 
-    <div class="panel strait-panel">
+        <!-- Current prices -->
 
-        <h2>Red Sea shipping route</h2>
+        <aside class="market-card">
 
-        <svg class="strait-diagram"
-             viewBox="0 0 260 130"
-             aria-hidden="true">
+            <p class="eyebrow">MARKET SNAPSHOT</p>
 
-            <path
-                d="M10 90 C60 40, 120 40, 150 70 S220 30, 250 20"
-                fill="none"
-                stroke="#4da7c7"
-                stroke-width="3"
-                stroke-linecap="round"
-            />
+            <h2>Current prices</h2>
 
-            <circle
-                cx="150"
-                cy="70"
-                r="7"
-                fill="#d95757"
-            />
+            <div class="price-list">
 
-            <text
-                x="150"
-                y="95"
-                text-anchor="middle"
-                class="diagram-label">
-                Bab el-Mandeb
-            </text>
+                <div class="price-row">
+                    <div>
+                        <span class="commodity">WTI</span>
+                        <small>Crude oil</small>
+                    </div>
 
-            <text
-                x="30"
-                y="115"
-                class="diagram-label dim">
-                Red Sea
-            </text>
+                    <strong id="stat-wti">--</strong>
+                </div>
 
-            <text
-                x="215"
-                y="15"
-                class="diagram-label dim">
-                Gulf of Aden
-            </text>
 
-        </svg>
+                <div class="price-row">
+                    <div>
+                        <span class="commodity">Brent</span>
+                        <small>Crude oil</small>
+                    </div>
 
-        <p>
-            The Bab el-Mandeb Strait connects the Red Sea with the
-            Gulf of Aden. Problems along this route can increase
-            shipping costs and create uncertainty in the oil market.
-        </p>
+                    <strong id="stat-brent">--</strong>
+                </div>
 
-    </div>
 
-</aside>
-```
+                <div class="price-row">
+                    <div>
+                        <span class="commodity">Gasoline</span>
+                        <small>US average</small>
+                    </div>
+
+                    <strong id="stat-gas">--</strong>
+                </div>
+
+            </div>
+
+            <p class="market-note" id="gas-footnote"></p>
+
+        </aside>
+
+    </section>
+
+
+    <!-- Shipping information -->
+
+    <section id="shipping" class="shipping-section">
+
+        <div class="shipping-info">
+
+            <p class="eyebrow">ENERGY & SHIPPING</p>
+
+            <h2>Why the Red Sea matters</h2>
+
+            <p>
+                The Bab el-Mandeb Strait is an important shipping
+                route connecting the Red Sea with the Gulf of Aden.
+                Disruptions in this area can increase transport
+                costs, delay shipments and add uncertainty to oil
+                markets.
+            </p>
+
+        </div>
+
+
+        <div class="route-map">
+
+            <div class="sea-label red-sea">
+                RED SEA
+            </div>
+
+            <div class="route-line"></div>
+
+            <div class="route-point">
+                <span></span>
+                <strong>Bab el-Mandeb</strong>
+            </div>
+
+            <div class="sea-label gulf">
+                GULF OF ADEN
+            </div>
+
+            <div class="ship">
+                ◆
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Bottom update -->
+
+    <section class="update-bar">
+
+        <div>
+            <span class="update-label">LAST UPDATE</span>
+            <span id="updated-text">Waiting for first update...</span>
+        </div>
+
+        <div class="data-source">
+            Oil market data via Yahoo Finance
+        </div>
+
+    </section>
 
 </main>
 
-<footer class="footer">
 
-```
-<span id="updated-text">
-    Waiting for first update...
-</span>
+<footer>
 
-<span class="footer-sep">|</span>
+    <div class="footer-inner">
 
-<span>
-    Oil prices from Yahoo Finance data.
-</span>
-```
+        <span>OilWatch</span>
+
+        <span>
+            A student-built oil market monitoring project.
+        </span>
+
+        <span>© 2026</span>
+
+    </div>
 
 </footer>
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 
