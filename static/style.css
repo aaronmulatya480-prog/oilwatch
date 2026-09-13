@@ -1,0 +1,269 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #101820;
+    color: #f2f2f2;
+}
+
+.topbar {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #34404d;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-mark {
+    width: 14px;
+    height: 14px;
+    background-color: #f4b942;
+    border-radius: 50%;
+}
+
+.brand-name {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #b8c2cc;
+    font-size: 14px;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    background-color: #777;
+    border-radius: 50%;
+}
+
+.status-dot.live {
+    background-color: #36c98f;
+}
+
+.status-dot.error {
+    background-color: #e05252;
+}
+
+.hero {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto 0;
+    padding: 30px;
+    background-color: #18232f;
+    border: 1px solid #34404d;
+    border-radius: 10px;
+}
+
+.hero-price {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-label {
+    color: #aeb8c2;
+    font-size: 14px;
+}
+
+.hero-number {
+    font-size: 42px;
+    font-weight: bold;
+    color: #f4b942;
+}
+
+.hero-delta {
+    color: #b8c2cc;
+}
+
+.hero-delta.up {
+    color: #e05252;
+}
+
+.hero-delta.down {
+    color: #36c98f;
+}
+
+.hero-context {
+    max-width: 800px;
+    margin-top: 20px;
+    color: #c0c8d0;
+    line-height: 1.7;
+}
+
+.body-grid {
+    width: 90%;
+    max-width: 1100px;
+    margin: 25px auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.panel {
+    background-color: #18232f;
+    border: 1px solid #34404d;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.panel h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: 16px;
+    color: #dce2e7;
+}
+
+.panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.legend {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    color: #b8c2cc;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.swatch {
+    width: 12px;
+    height: 4px;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.swatch.wti {
+    background-color: #f4b942;
+}
+
+.swatch.brent {
+    background-color: #36c98f;
+}
+
+.swatch.event {
+    background-color: #e05252;
+}
+
+.rail {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stat-list {
+    margin: 0;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 0;
+    border-bottom: 1px solid #34404d;
+}
+
+.stat-row dt {
+    color: #b8c2cc;
+}
+
+.stat-row dd {
+    margin: 0;
+    font-weight: bold;
+}
+
+.stat-footnote {
+    color: #9da8b3;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.strait-diagram {
+    width: 100%;
+    background-color: #111c26;
+    border: 1px solid #34404d;
+    border-radius: 8px;
+}
+
+.diagram-label {
+    fill: #f2f2f2;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+}
+
+.diagram-label.dim {
+    fill: #9da8b3;
+}
+
+.strait-panel p {
+    color: #b8c2cc;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.footer {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px 0 30px;
+    color: #8f9aa5;
+    font-size: 13px;
+}
+
+.footer-sep {
+    margin: 0 8px;
+}
+
+#oil-chart {
+    width: 100% !important;
+    height: 300px !important;
+}
+
+@media (max-width: 800px) {
+    .body-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 22px;
+    }
+
+    .hero-number {
+        font-size: 34px;
+    }
+
+    .topbar {
+        width: 94%;
+    }
+
+    .hero,
+    .body-grid,
+    .footer {
+        width: 94%;
+    }
+}

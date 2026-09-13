@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OilWatch - Oil Price Tracker</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+        <span class="brand-mark"></span>
+        <span class="brand-name">OilWatch</span>
+    </div>
+
+    <div class="status" id="status">
+        <span class="status-dot"></span>
+        <span id="status-text">Connecting...</span>
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-price">
+
+        <span class="hero-label">WTI Crude Oil</span>
+
+        <span class="hero-number" id="hero-wti">--</span>
+
+        <span class="hero-delta" id="hero-wti-delta">--</span>
+
+    </div>
+
+    <p class="hero-context">
+        OilWatch provides information about crude oil prices and
+        shows how events around the Red Sea can affect the oil market.
+    </p>
+
+</section>
+
+
+<main class="body-grid">
+
+    <section class="panel">
+
+        <div class="panel-head">
+
+            <h2>Oil Prices - Last 30 Days</h2>
+
+            <div class="legend">
+
+                <span class="legend-item">
+                    <i class="swatch wti"></i>
+                    WTI
+                </span>
+
+                <span class="legend-item">
+                    <i class="swatch brent"></i>
+                    Brent
+                </span>
+
+                <span class="legend-item">
+                    <i class="swatch event"></i>
+                    Event
+                </span>
+
+            </div>
+
+        </div>
+
+        <canvas id="oil-chart" height="260"></canvas>
+
+    </section>
+
+
+    <aside class="rail">
+
+        <div class="panel">
+
+            <h2>Current Prices</h2>
+
+            <dl class="stat-list">
+
+                <div class="stat-row">
+                    <dt>WTI Crude</dt>
+                    <dd id="stat-wti">--</dd>
+                </div>
+
+                <div class="stat-row">
+                    <dt>Brent Crude</dt>
+                    <dd id="stat-brent">--</dd>
+                </div>
+
+                <div class="stat-row">
+                    <dt>US Gas Average</dt>
+                    <dd id="stat-gas">--</dd>
+                </div>
+
+            </dl>
+
+            <p class="stat-footnote" id="gas-footnote"></p>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h2>Red Sea Information</h2>
+
+            <svg class="strait-diagram"
+                 viewBox="0 0 260 130"
+                 aria-hidden="true">
+
+                <path
+                    d="M10 90 C60 40, 120 40, 150 70 S220 30, 250 20"
+                    fill="none"
+                    stroke="#36c98f"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                />
+
+                <circle
+                    cx="150"
+                    cy="70"
+                    r="7"
+                    fill="#e05252"
+                />
+
+                <text
+                    x="150"
+                    y="95"
+                    text-anchor="middle"
+                    class="diagram-label">
+                    Bab el-Mandeb
+                </text>
+
+                <text
+                    x="30"
+                    y="115"
+                    class="diagram-label dim">
+                    Red Sea
+                </text>
+
+                <text
+                    x="215"
+                    y="15"
+                    class="diagram-label dim">
+                    Gulf of Aden
+                </text>
+
+            </svg>
+
+            <p>
+                The Bab el-Mandeb Strait is an important route for
+                ships travelling between the Red Sea and the Gulf of Aden.
+                Disruptions in this area can affect shipping and oil prices.
+            </p>
+
+        </div>
+
+    </aside>
+
+</main>
+
+
+<footer class="footer">
+
+    <span id="updated-text">
+        Waiting for first update...
+    </span>
+
+    <span class="footer-sep">|</span>
+
+    <span>
+        Oil prices from Yahoo Finance data.
+    </span>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
